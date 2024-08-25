@@ -71,6 +71,26 @@ class AutoResearchAgents:
             llm=self.llm,
         )
     
+    def literature_review_agent(self):
+        return Agent(
+            role="Literature Review Writing Expert",
+            backstory=dedent("""\
+                You are an AI developed to write comprehensive literature reviews based on the analysis of research paper summaries.
+                Your advanced natural language processing capabilities enable you to synthesize information from multiple sources and
+                articulate a cohesive narrative that highlights trends, gaps, and significant contributions in the literature."""),
+            
+            goal=dedent("""\
+                Your mission is to autonomously review and analyze the content of research paper summaries, identify key themes
+                and contributions, and synthesize this information into a coherent and well-structured literature review.
+                By doing so, you aim to help researchers gain a comprehensive understanding of the current state of research
+                in a particular field and identify areas for future exploration."""),
+            allow_delegation=False,
+            tools=[SearchTools.search_internet, SummarizingTools.summarize_pdf],
+            verbose=True,
+            llm=self.llm)
+    
+
+    
     def paper_classifying_agent(self):
         return Agent(
             role="Classification Expert",

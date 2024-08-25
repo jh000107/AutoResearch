@@ -7,6 +7,8 @@ from crewai import Task
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 
+from tools.search_tools import SearchTools
+
 import os
 
 class SummarizingTools():
@@ -54,7 +56,7 @@ class SummarizingTools():
 
         llm = ChatGroq(
             api_key=os.getenv("GROQ_API_KEY"),
-            model="llama3-8b-8192"
+            model="llama3-70b-8192"
         )
 
         for chunk in text_chunks:
@@ -65,7 +67,9 @@ class SummarizingTools():
                 backstory=
                 'You are a Summarizing Expert at a AI research lab and you need to summarize about a given topic',
                 allow_delegation=False,
-                llm=llm
+                verbose=True,
+                tools=[SearchTools.dummy_tool],
+                llm=llm,
             )
 
             task = Task(
@@ -86,6 +90,7 @@ class SummarizingTools():
                 backstory=
                 'You are a Summarizing Expert at a AI research lab and you need to summarize about a given research paper',
                 allow_delegation=False,
+                tools=[SearchTools.dummy_tool],
                 llm=llm
         )
         

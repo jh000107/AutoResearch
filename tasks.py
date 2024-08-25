@@ -87,6 +87,8 @@ class AutoResearchTasks:
 
             You MUST use the actual results from the search. DO NOT make up on your own.
 
+            You only need to use the tool ONCE. There is no need to call the tool more than once.
+
             **Parameters for the tool**:
              - query: {keywords}
             
@@ -120,6 +122,25 @@ class AutoResearchTasks:
                 """),
             agent=agent,
             context=context,
+            callback=callback_function
+        )
+    
+    def write_literature_review(self, agent, context, callback_function):
+        return Task(
+            description=dedent(
+                """
+                **Task**: Analyze Summaries and Write a Literature Review
+                **Description**: This task involves reviewing and analyzing the summaries of research papers to identify key themes, trends,
+                    and gaps in the literature. The goal is to synthesize this information into a coherent and well-structured literature review
+                    that provides and overview of of the current state of research in a particular field.
+                
+                Your final answer MUST be a well-organized literature review that integrates the key points and contributions of the summarized papers.
+
+                **Note**: {self.__tip_section}
+                """),
+            
+            agent=agent,
+            contexnt=context,
             callback=callback_function
         )
     
