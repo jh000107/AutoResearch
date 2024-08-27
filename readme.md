@@ -60,7 +60,7 @@ poetry shell
 
 ### Set up your environment variables:
 - Create a .env file in the root directory.
-- Add your GROQ_API_KEY, Semantic Scholar API Key, and other necessary credentials.
+- Add your OPENAI_API_KEY, GROQ_API_KEY, Semantic Scholar API Key, and other necessary credentials.
 
 ### Running the project 
 ```
