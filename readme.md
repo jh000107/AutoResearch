@@ -51,9 +51,11 @@ git clone https://github.com/jh000107/AutoResearch.git
 cd AutoResearch
 ```
 
-### Install the dependencies using Poetry:
+### Install and activate the environment & dependencies using Poetry:
 ```
-poetry install
+poetry install --no-root
+poetry env list
+poetry shell
 ```
 
 ### Set up your environment variables:
